@@ -1,4 +1,4 @@
-# Shool
+# School
 
 Main purpose is building a school application where teachers will be able to assign student grades.
 
