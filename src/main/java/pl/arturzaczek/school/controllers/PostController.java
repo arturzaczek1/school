@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.arturzaczek.school.form.PostRegisterForm;
 import pl.arturzaczek.school.services.PostService;
 
@@ -35,6 +33,17 @@ public class PostController {
             return "post/new-post-form";
         }
         postService.saveNewPost(postRegisterForm);
-        return "/index";
+        return "/post/post-management";
+    }
+    @GetMapping ("/post/management")
+    public String goToPostManagement (Model model){
+        model.addAttribute("posts", postService.getPostList());
+        return "/post/post-management";
+    }
+    @GetMapping ("/post/delete/{id}")
+    public String deletePost (@PathVariable String id){
+        long longId = Long.parseLong(id);
+        postService.deleteOnePost(longId);
+        return "/post/post-management";
     }
 }

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Setter
 @Getter
-public class Post {
+public class Post implements Comparable <Post>{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,4 +22,9 @@ public class Post {
     private User postAuthor;
     @Column (name = "added_date")
     private LocalDateTime addedDate;
+
+    @Override
+    public int compareTo(Post o) {
+        return -this.getAddedDate().compareTo(o.getAddedDate());
+    }
 }
