@@ -22,6 +22,6 @@ public abstract class BaseEntity {
     private String lastName;
     @Column (name = "email")
     private String email;
-    @Column (name = "password_hash")
-    private String passwordHash;
+    @Column (name = "password")
+    private String password;
 }

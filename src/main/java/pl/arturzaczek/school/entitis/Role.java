@@ -14,5 +14,10 @@ public class Role {
     private Long id;
     @Column(name = "role_name")
     private String roleName;
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
 
+    public Role() {
+    }
 }

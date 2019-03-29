@@ -18,9 +18,14 @@ public class Mark {
     @Column (name = "assignment_date")
     private LocalDate assignmentDate;
     @OneToOne
+    @JoinColumn (name = "subject_id")
     private Subject subject;
     @OneToOne
-    private Employee employee;
+    @JoinColumn (name = "pupil_id")
+    private User user;
+    @OneToOne
+    @JoinColumn (name = "teacher_id")
+    private User teacher;
     @Size (min = 5, max = 200)
     private String description;
 }

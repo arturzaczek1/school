@@ -24,16 +24,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .anyRequest().permitAll()
                 .and()
+                .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
                 .formLogin()
-                .loginPage("/employee/login")
+                .loginPage("/user/login-form")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .failureUrl("/employee/login?status=error")
-                .loginProcessingUrl("/employee/loggedIn")
+                .failureUrl("/user/login-form?status=error")
+                .loginProcessingUrl("/user/loggedIn")
                 .defaultSuccessUrl("/index")
                 .and()
                 .logout()
-                .logoutUrl("/employee/logout")
+                .logoutUrl("/user/logout")
                 .logoutSuccessUrl("/index")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
@@ -44,11 +47,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT u.email, u.password, 1 FROM employee e WHERE e.email = ? ")
-                .authoritiesByUsernameQuery("SELECT e.email, r.role_name " +
-                        "FROM employee e " +
-                        "JOIN role r ON e.role_id = r.id " +
-                        "WHERE e.email = ?")
+                .usersByUsernameQuery("SELECT u.email, u.password, 1 FROM user u WHERE u.email = ? ")
+                .authoritiesByUsernameQuery("SELECT u.email, r.role_name FROM user u " +
+                                "JOIN user_role ur ON ur.user_id = ur.role_set_id " +
+                                "JOIN role r ON ur.role_set_id = r.id " +
+                        "WHERE u.email = ?")
                 .passwordEncoder(passwordEncoder)
         ;
     }
