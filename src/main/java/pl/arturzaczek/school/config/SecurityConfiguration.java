@@ -33,11 +33,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .failureUrl("/user/login-form?status=errors")
                 .loginProcessingUrl("/user/loggedIn")
-                .defaultSuccessUrl("/index")
+                .defaultSuccessUrl("/user/profile")
                 .and()
                 .logout()
                 .logoutUrl("/user/logout")
-                .logoutSuccessUrl("/index")
+                .logoutSuccessUrl("/user/login-form?status=logout")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
         ;
