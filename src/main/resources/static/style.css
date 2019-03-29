@@ -12,7 +12,8 @@
 a.error_page_link {
     margin-top: 40vh;
     text-decoration: none;
-    font-size: 36px;
+    font-size: 26px;
+    font-weight: 600;
     color: black;
     text-shadow: 1px 1px 3px #071B28;
 }
