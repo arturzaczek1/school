@@ -56,12 +56,13 @@ public class UserController {
         return "redirect:/index";
     }
     @GetMapping("/user/logout")
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/user/login?logout";
+        model.addAttribute("message", "you have been logged out");
+        return "redirect:/user/login-form?logout";
     }
     @GetMapping("/user/profile")
     public String goToUserProfile (){

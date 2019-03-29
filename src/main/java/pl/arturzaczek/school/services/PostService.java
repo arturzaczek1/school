@@ -42,6 +42,11 @@ public class PostService {
         postRepository.save(post);
     }
     public List<Post> getPostList (){
-        return postRepository.findAll();
+        List<Post> posts = postRepository.findAll();
+        posts.sort(Post::compareTo);
+        return posts;
+    }
+    public void deleteOnePost (Long id){
+        postRepository.deleteById(id);
     }
 }
