@@ -6,4 +6,11 @@
 .custom_register_error {
     color: red;
 }
+.error{
+    color: red;
+}
+.custom_post_card{
+    background-color: red;
+    color: black;
+}
 

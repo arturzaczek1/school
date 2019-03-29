@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 public class Post {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     @Column (name = "post_title")
     private String postTitle;
