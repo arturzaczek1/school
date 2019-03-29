@@ -2,12 +2,15 @@
     margin: 0;
     box-sizing: border-box;
 }
-.error_page{
-    background-image: url('images/background.jpg');
+body{
+    background-image: linear-gradient(to right top, #76787c, #888e90, #9da3a3, #b4b9b6, #cdcfca);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+}
+.error_page{
+    background-image: url('images/background.jpg');
 }
 a.error_page_link {
     margin-top: 40vh;
