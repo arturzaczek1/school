@@ -61,8 +61,7 @@ public class UserController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        model.addAttribute("message", "you have been logged out");
-        return "redirect:/user/login-form?logout";
+        return "redirect:/user/login-form";
     }
     @GetMapping("/user/profile")
     public String goToUserProfile (){

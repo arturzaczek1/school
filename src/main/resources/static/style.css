@@ -3,21 +3,37 @@
     box-sizing: border-box;
 }
 body{
-    background-image: linear-gradient(to right top, #76787c, #888e90, #9da3a3, #b4b9b6, #cdcfca);
+    background-color: #D9D9D9;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
+h2, h4{
+    color: #CD5360;
+}
+/*label{*/
+/*    color: #B37D4E;*/
+/*}*/
 .error_page{
     background-image: url('images/background.jpg');
+}
+.custom_panel{
+    margin-top: 60px;
+    text-align: center;
+}
+.custom_header{
+    text-align: center;
+}
+.btn-group-vertical{
+    margin: 40px auto 20px auto;
 }
 a.error_page_link {
     margin-top: 40vh;
     text-decoration: none;
-    font-size: 26px;
+    font-size: 27px;
     font-weight: 600;
-    color: black;
+    color: #CD5360;
     text-shadow: 1px 1px 3px #071B28;
 }
 .custom_register_error {
