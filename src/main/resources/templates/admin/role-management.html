@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>School Class</title>
+    <title>Roles management</title>
     <th:block th:include="fragments/imports :: head"></th:block>
 
 </head>
@@ -10,10 +10,12 @@
 <th:block th:include="fragments/nav :: navbar"></th:block>
 <div class="container-fluid">
     <div class="row justify-content-center mt-1">
-        <div class="col-sm-12 col-md-10 col-lg-8 mt-3 ml-2">
-            <form class="mt-3" th:action="@{/s-c/new-class-form}" th:method="get">
-                <button type="submit" class="btn btn-primary">add class</button>
-            </form>
+        <div class="col-sm-10 col-md-8 col-lg-6 mt-3">
+            <h4>role search:</h4>
+            <select class="custom-select" id="selectCategory" name="category">
+                <option selected th:value="${roles}">Any...</option>
+                <option th:each="role : ${roles}" th:value="${role}" th:text="${role}">cat</option>
+            </select>
             <form class="mt-3" th:action="@{/admin/panel}" th:method="get">
                 <button type="submit" class="btn btn-primary">back to admin panel</button>
             </form>
@@ -22,7 +24,13 @@
             </form>
         </div>
     </div>
+    <div class="row justify-content-center mt-1">
+        <div class="col-sm-10 col-md-8 col-lg-6 mt-3">
+            <h4>user search:</h4>
+        </div>
+    </div>
 </div>
+
 <th:block th:include="fragments/imports :: js_import"></th:block>
 
 </body>
