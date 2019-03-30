@@ -10,3 +10,7 @@ Main purpose is building a school application where teachers will be able to ass
 * [Bootstrap 4](https://getbootstrap.com/) - Front styling
 * [Lombok](https://projectlombok.org/) - java library
 * [h2 Database](http://www.h2database.com/) - temporary Database (target: MySQL)
+
+## Demo
+
+[HEROKU demo](https://school-app2.herokuapp.com/)
