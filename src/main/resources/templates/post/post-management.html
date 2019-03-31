@@ -15,15 +15,20 @@
                 <button type="submit" class="btn btn-primary">Add new post</button>
             </form>
             <h4>all posts:</h4>
-            <div class="card mt-2" th:each="post : ${posts}">
+            <div class="card mt-2" th:each="post : ${postList}">
                 <div class="card-header"><h5 th:text="${post.postTitle}">Post title</h5></div>
                 <div class="card-body">
                     <p class="card-text" th:text="${post.postBody}">Post body</p>
                     <footer class="blockquote-footer"
-                       th:text=" 'added date: ' +${#temporals.format(post.addedDate, 'yyyy-MM-dd HH:mm')}">
-                        2019-03-02 11:07:10</footer>
-                    <form class="mt-3 mr-2 confirmation" th:action="@{/post/delete/} + ${post.id}" th:method="get">
-                        <button type="submit" class="btn btn-primary btn-sm">delete</button>
+                            th:text=" 'added date: ' +${#temporals.format(post.addedDate, 'yyyy-MM-dd HH:mm')}">
+                        2019-03-02 11:07:10
+                    </footer>
+                    <form class="mt-3 mr-2" th:action="@{/post/delete/}" th:method="post" id="modal1">
+                        <input type="hidden" name="post_id" th:value="${post.id}">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                data-target="#custom_modal">
+                            delete
+                        </button>
                     </form>
                 </div>
             </div>
@@ -37,6 +42,7 @@
     </div>
 </div>
 
+<th:block th:include="fragments/modal :: modal_window"></th:block>
 <th:block th:include="fragments/imports :: js_import"></th:block>
 
 </body>
