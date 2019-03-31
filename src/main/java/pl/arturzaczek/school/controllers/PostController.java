@@ -35,7 +35,7 @@ public class PostController {
         postService.saveNewPost(postRegisterForm);
         return "/post/post-management";
     }
-    @GetMapping ("/post/management")
+    @GetMapping ("post/management")
     public String goToPostManagement (Model model){
         model.addAttribute("posts", postService.getPostList());
         return "/post/post-management";
