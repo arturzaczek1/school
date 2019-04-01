@@ -7,7 +7,8 @@
 </head>
 <body>
 <th:block th:fragment="modal_window">
-    <div class="modal fade" id="custom_modal" tabindex="-1" role="dialog" aria-labelledby="dialog window" aria-hidden="true">
+    <div class="modal fade" id="custom_modal" tabindex="-1" role="dialog" aria-labelledby="dialog window"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -21,7 +22,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancel</button>
-                    <button type="button" class="btn btn-warning" onclick="document.getElementById('modal1').submit();">Yes, delete</button>
+                    <button type="button" class="btn btn-warning" id="confirm">Yes, delete</button>
                 </div>
             </div>
         </div>

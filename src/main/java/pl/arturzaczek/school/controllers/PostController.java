@@ -5,12 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.arturzaczek.school.entitis.Post;
 import pl.arturzaczek.school.form.PostRegisterForm;
 import pl.arturzaczek.school.services.PostService;
 
 import javax.validation.Valid;
-import java.util.List;
+
 
 @Controller
 public class PostController {
@@ -47,9 +46,10 @@ public class PostController {
     }
 
     @PostMapping ("/post/delete/")
-    public String deletePost2(@RequestParam String post_id ) {
+    public String deletePost2(@RequestParam String post_id, Model model ) {
         long longId = Long.parseLong(post_id);
         postService.deleteOnePost(longId);
+        model.addAttribute("postList", postService.getPostList());
         return "/post/post-management";
     }
 }

@@ -10,12 +10,11 @@ import pl.arturzaczek.school.repositories.UserRepository;
 import pl.arturzaczek.school.repositories.RoleRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
-
-    private static final String ROLE_USER = "ROLE_USER";
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
@@ -40,16 +39,20 @@ public class UserService {
     }
 
     public boolean checkIfUserExist (String email){
-        Optional<User> employeeOptional = userRepository.findFirstByEmail(email);
-        if(employeeOptional.isPresent()){
+        Optional<User> userOptional = userRepository.findFirstByEmail(email);
+        if(userOptional.isPresent()){
             return true;
         }
         return false;
     }
     private void getORCreateDefaultRole(User user) {
-        Role role = roleRepository.findByRoleName(ROLE_USER)
-                .orElseGet(() -> roleRepository.save(new Role(ROLE_USER)));
+        Role role = roleRepository.findByRoleName(Roles.USER.getRole())
+                .orElseGet(() -> roleRepository.save(new Role(Roles.USER.getRole())));
         user.addRole(role);
+    }
+    public List<User> getUserList(){
+        List<User> users = userRepository.findAll();
+        return users;
     }
 
 }

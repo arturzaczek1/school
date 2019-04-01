@@ -11,20 +11,19 @@
 <div class="container-fluid">
     <div class="row justify-content-center mt-1">
         <div class="col-sm-12 col-md-10 col-lg-8 mt-3 ml-2">
-            <form class="mt-3" th:action="@{/s-c/new-class-form}" th:method="get">
-                <button type="submit" class="btn btn-primary">add class</button>
+            <h4>student search:</h4>
+            <form class="mt-2" th:action="@{/student/add}" th:method="get">
+                <button class="btn btn-primary" type="submit">add student</button>
             </form>
-            <h4>class search</h4>
-            <div class="card mt-2" th:each="sc : ${sc}">
-                <div class="card-header"><h5 th:text="${sc.} + ' '+ ${user.lastName}">User name and last name</h5>
-                </div>
-                <div class="card-body">
-                    <p class="card-text" th:text="'email: ' + ${user.email}">User email</p>
-                    <p class="card-text"
-                       th:text=" 'added date: ' + ${#temporals.format(user.addedDate, 'yyyy-MM-dd HH:mm')}">User added
-                        date</p>
-
-                </div>
+<!--            <div class="card mt-2" th:each="sc : ${sc}">-->
+<!--                <div class="card-header"><h5 th:text="${sc.} + ' '+ ${user.lastName}">User name and last name</h5>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <p class="card-text" th:text="'email: ' + ${user.email}">User email</p>-->
+<!--                    <p class="card-text"-->
+<!--                       th:text=" 'added date: ' + ${#temporals.format(user.addedDate, 'yyyy-MM-dd HH:mm')}">User added-->
+<!--                        date</p>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
