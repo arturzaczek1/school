@@ -14,3 +14,13 @@ Main purpose is building a school application where teachers will be able to ass
 ## Demo
 
 [HEROKU demo](https://school-app2.herokuapp.com/)
+
+## Screenshots
+
+**Post management:**
+
+![Post management](https://i.ibb.co/wKWQcV7/post-management.jpg)
+
+**Register form:**
+
+![Register form](https://i.ibb.co/VSRf59T/register-form.jpg)
