@@ -10,7 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.arturzaczek.school.form.UserRegisterForm;
+import pl.arturzaczek.school.forms.UserRegisterForm;
 import pl.arturzaczek.school.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +61,7 @@ public class UserController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/user/login-form";
+        return "redirect:/user/login-forms";
     }
     @GetMapping("/user/profile")
     public String goToUserProfile (){

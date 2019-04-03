@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.arturzaczek.school.form.PostRegisterForm;
+import pl.arturzaczek.school.forms.PostRegisterForm;
 import pl.arturzaczek.school.services.PostService;
 
 import javax.validation.Valid;

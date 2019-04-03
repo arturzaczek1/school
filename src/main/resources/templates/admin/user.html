@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Roles management</title>
+    <th:block th:include="fragments/imports :: head"></th:block>
+
+</head>
+<body>
+<th:block th:include="fragments/nav :: navbar"></th:block>
+<div class="container-fluid">
+    <div class="row justify-content-center mt-1">
+        <div class="col-sm-18 col-md-6 col-lg-4 mt-3">
+
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title" th:text="${userDto.name} + ' '+ ${userDto.lastName}"></h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text" th:text="'user id: '+ ${userDto.id}"></p>
+                    <p class="card-text" th:text="'user email: '+ ${userDto.email}"></p>
+                    <p class="card-text" th:text="'user birth date: '+ ${userDto.birthDate}"></p>
+                    <button class="btn btn-warning btn-sm mt-1" type="button">edit user data</button>
+                    <hr>
+                    <p class="card-text">roles:</p>
+                    <ul class="list-group list-group-flush" th:each="role : ${userDto.roleSet}">
+                        <li class="list-group-item" th:text="${role.roleName}">roles</li>
+                    </ul>
+                    <p class="card-text">new role:</p>
+                    <form th:method="post" th:action="@{/admin/roles/new}">
+                        <select class="custom-select" name="new_role">
+                            <option selected th:value="${roles}">Any...</option>
+                            <option th:each="role : ${roles}" th:value="${role}" th:text="${role}">role</option>
+                        </select>
+                        <input type="hidden" name="user_id" th:value="${userDto.id}">
+                        <button class="btn btn-warning btn-sm mt-1" type="submit">add role</button>
+                    </form>
+                </div>
+            </div>
+            <span><h2 class="error" th:text="${success}">succes</h2></span>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-1">
+        <div class="col-sm-10 col-md-8 col-lg-6 mt-3">
+
+            <form class="mt-3" th:action="@{/admin/roles}" th:method="get">
+                <button type="submit" class="btn btn-primary">back to roles management</button>
+            </form>
+            <form class="mt-3" th:action="@{/}" th:method="get">
+                <button type="submit" class="btn btn-primary">back to main menu</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<th:block th:include="fragments/imports :: js_import"></th:block>
+
+</body>
+</html>

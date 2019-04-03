@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.arturzaczek.school.entitis.Post;
 import pl.arturzaczek.school.entitis.User;
-import pl.arturzaczek.school.form.PostRegisterForm;
+import pl.arturzaczek.school.forms.PostRegisterForm;
 import pl.arturzaczek.school.repositories.PostRepository;
 import pl.arturzaczek.school.repositories.UserRepository;
 
