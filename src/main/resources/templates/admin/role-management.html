@@ -11,16 +11,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center mt-1">
         <div class="col-sm-10 col-md-8 col-lg-6 mt-3">
-            <h4>role search:</h4>
-            <select class="custom-select" id="selectCategory" name="category">
-                <option selected th:value="${roles}">Any...</option>
-                <option th:each="role : ${roles}" th:value="${role}" th:text="${role}">cat</option>
-            </select>
-        </div>
-    </div>
-    <div class="row justify-content-center mt-1">
-        <div class="col-sm-10 col-md-8 col-lg-6 mt-3">
-            <h4>user search</h4>
+            <h4>user search:</h4>
             <div class="card mt-2" th:each="user : ${users}">
                 <div class="card-header"><h5 th:text="${user.name} + ' '+ ${user.lastName}">User name and last name</h5>
                 </div>
@@ -29,7 +20,12 @@
                     <p class="card-text"
                        th:text=" 'added date: ' + ${#temporals.format(user.addedDate, 'yyyy-MM-dd HH:mm')}">User added
                         date</p>
-
+                    <form th:method="post" th:action="@{/admin/role-management/user}">
+                        <input type="hidden" name="user_id" th:value="${user.getId()}">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            change roles
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

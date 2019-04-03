@@ -1,4 +1,4 @@
-package pl.arturzaczek.school.form;
+package pl.arturzaczek.school.forms;
 
 import lombok.Getter;
 import lombok.Setter;

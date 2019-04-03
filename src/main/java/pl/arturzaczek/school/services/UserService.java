@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.arturzaczek.school.entitis.User;
 import pl.arturzaczek.school.entitis.Role;
-import pl.arturzaczek.school.form.UserRegisterForm;
+import pl.arturzaczek.school.forms.UserRegisterForm;
 import pl.arturzaczek.school.repositories.UserRepository;
 import pl.arturzaczek.school.repositories.RoleRepository;
 

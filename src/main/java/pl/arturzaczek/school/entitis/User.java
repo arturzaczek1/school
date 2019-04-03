@@ -2,6 +2,7 @@ package pl.arturzaczek.school.entitis;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.arturzaczek.school.services.Roles;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,7 +13,11 @@ import java.util.Set;
 @Setter
 @Getter
 public class User extends BaseEntity{
-    //pupil
+
+    @ManyToMany
+    @JoinTable(name = "user_role")
+    private Set<Role> roleSet;
+    //student
     @Column(name = "birth_date")
     private LocalDate birthDate;
     @ManyToMany
@@ -25,9 +30,6 @@ public class User extends BaseEntity{
     @ManyToMany
     @JoinTable(name = "user_subject")
     private Set<Subject> subjectSet;
-    @ManyToMany
-    @JoinTable(name = "user_role")
-    private Set<Role> roleSet;
 
     public void addRole(Role role){
         if(roleSet == null){
