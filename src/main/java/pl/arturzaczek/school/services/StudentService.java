@@ -40,8 +40,8 @@ public class StudentService {
         return false;
     }
     private void getORCreateStudentRole(User user) {
-        Role role = roleRepository.findByRoleName(Roles.STUDENT.getRole())
-                .orElseGet(() -> roleRepository.save(new Role(Roles.STUDENT.getRole())));
+        Role role = roleRepository.findByRoleName(Roles.ROLE_STUDENT.getRole())
+                .orElseGet(() -> roleRepository.save(new Role(Roles.ROLE_STUDENT.getRole())));
         user.addRole(role);
     }
 }

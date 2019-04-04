@@ -49,9 +49,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery("SELECT u.email, u.password, 1 FROM user u WHERE u.email = ? ")
                 .authoritiesByUsernameQuery("SELECT u.email, r.role_name FROM user u " +
-                                "JOIN user_role ur ON ur.user_id = ur.role_set_id " +
-                                "JOIN role r ON ur.role_set_id = r.id " +
-                        "WHERE u.email = ?")
+                        "JOIN user_role ur ON ur.user_id = ur.role_id " +
+                        "JOIN role r ON ur.role_id = r.id WHERE u.email = ?")
                 .passwordEncoder(passwordEncoder)
         ;
     }
