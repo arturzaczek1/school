@@ -21,24 +21,41 @@
                     <p class="card-text" th:text="'user id: '+ ${userDto.id}"></p>
                     <p class="card-text" th:text="'user email: '+ ${userDto.email}"></p>
                     <p class="card-text" th:text="'user birth date: '+ ${userDto.birthDate}"></p>
-                    <button class="btn btn-warning btn-sm mt-1" type="button">edit user data</button>
+
                     <hr>
                     <p class="card-text">roles:</p>
                     <ul class="list-group list-group-flush" th:each="role : ${userDto.roleSet}">
-                        <li class="list-group-item" th:text="${role.roleName}">roles</li>
+                        <li class="list-group-item" th:text="${role.roleName}">
+                            roles
+                        </li>
                     </ul>
                     <p class="card-text">new role:</p>
                     <form th:method="post" th:action="@{/admin/roles/new}">
                         <select class="custom-select" name="new_role">
-                            <option selected th:value="${roles}">Any...</option>
-                            <option th:each="role : ${roles}" th:value="${role}" th:text="${role}">role</option>
+                            <option selected th:value="${rolesEnum}">Any...</option>
+                            <option th:each="roleE : ${rolesEnum}" th:value="${roleE}" th:text="${roleE.name()}">
+                                role
+                            </option>
                         </select>
                         <input type="hidden" name="user_id" th:value="${userDto.id}">
                         <button class="btn btn-warning btn-sm mt-1" type="submit">add role</button>
                     </form>
+
+                    <hr>
+                    <p class="card-text">remove role:</p>
+                    <form th:method="post" th:action="@{/admin/roles/remove}">
+                        <select class="custom-select" name="remove_role">
+                            <option selected th:value="${roles}">Any...</option>
+                            <option th:each="role : ${userDto.roleSet}" th:value="${role.id}" th:text="${role.roleName}">
+                                role
+                            </option>
+                        </select>
+                        <input type="hidden" name="user_id" th:value="${userDto.id}">
+                        <button class="btn btn-warning btn-sm mt-1" type="submit">remove role</button>
+                    </form>
                 </div>
             </div>
-            <span><h2 class="error" th:text="${success}">succes</h2></span>
+            <span><h2 class="error" th:text="${success}">success</h2></span>
         </div>
     </div>
 

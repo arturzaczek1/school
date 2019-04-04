@@ -5,12 +5,12 @@ import lombok.Getter;
 
 @Getter
 public enum Roles {
-    USER("ROLE_USER"),
-    TEACHER("ROLE TEACHER"),
-    ADMIN("ROLE_ADMIN"),
-    PRINCIPAL("ROLE_PRINCIPAL"),
-    STUDENT("ROLE_STUDENT"),
-    PARENT("ROLE_PARENT");
+    ROLE_USER("USER"),
+    ROLE_TEACHER("TEACHER"),
+    ROLE_ADMIN("ADMIN"),
+    ROLE_PRINCIPAL("PRINCIPAL"),
+    ROLE_STUDENT("STUDENT"),
+    ROLE_PARENT("PARENT");
 
     private String role;
 

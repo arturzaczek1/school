@@ -46,8 +46,8 @@ public class UserService {
         return false;
     }
     private void getORCreateDefaultRole(User user) {
-        Role role = roleRepository.findByRoleName(Roles.USER.getRole())
-                .orElseGet(() -> roleRepository.save(new Role(Roles.USER.getRole())));
+        Role role = roleRepository.findByRoleName(Roles.ROLE_USER.toString())
+                .orElseGet(() -> roleRepository.save(new Role(Roles.ROLE_USER.toString())));
         user.addRole(role);
     }
     public List<User> getUserList(){
