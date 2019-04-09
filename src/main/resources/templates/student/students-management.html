@@ -11,10 +11,30 @@
 <div class="container-fluid">
     <div class="row justify-content-center mt-1">
         <div class="col-sm-12 col-md-10 col-lg-8 mt-3 ml-2">
-            <h4>student search:</h4>
             <form class="mt-2" th:action="@{/student/add}" th:method="get">
                 <button class="btn btn-primary" type="submit">add student</button>
             </form>
+            <p th:text="${info}"></p>
+            <h4>student search:</h4>
+            <div class="card mt-2" th:each="student : ${students}">
+                <div class="card-header"><h5 th:text="${student.getName()} + ' '+ ${student.lastName}">User name and last name</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text" th:text="'email: ' + ${student.email}">User email</p>
+                    <p class="card-text"
+                       th:text=" 'added date: ' + ${#temporals.format(student.addedDate, 'yyyy-MM-dd HH:mm')}">User added
+                        date</p>
+                    <p class="card-text"
+                       th:text=" 'added date: ' + ${#temporals.format(student.birthDate, 'yyyy-MM-dd')}">User added
+                        date</p>
+                    <form th:method="post" th:action="@{/}">
+                        <input type="hidden" name="user_id" th:value="${student.getId()}">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            empty
+                        </button>
+                    </form>
+                </div>
+            </div>
 <!--            <div class="card mt-2" th:each="sc : ${sc}">-->
 <!--                <div class="card-header"><h5 th:text="${sc.} + ' '+ ${user.lastName}">User name and last name</h5>-->
 <!--                </div>-->
@@ -24,7 +44,7 @@
 <!--                       th:text=" 'added date: ' + ${#temporals.format(user.addedDate, 'yyyy-MM-dd HH:mm')}">User added-->
 <!--                        date</p>-->
 <!--                </div>-->
-            </div>
+<!--            </div>-->
         </div>
     </div>
     <div class="row justify-content-center mt-1">
