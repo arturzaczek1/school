@@ -50,8 +50,8 @@ public class AdminController {
     @PostMapping("/admin/roles/new")
     public String addNewRole(@RequestParam(defaultValue = "ROLE_USER") String new_role, @RequestParam String user_id, Model model) {
         System.out.println(user_id + " " + new_role);
-        String success = roleService.addNewRole(user_id, new_role);
-        model.addAttribute("success", success);
+        String info = roleService.addNewRole(user_id, new_role);
+        model.addAttribute("success", info);
         model.addAttribute("rolesEnum", Roles.values());
         model.addAttribute("roles", roleService.getRolesList());
         model.addAttribute("userDto", adminService.getUserDto(Long.parseLong(user_id)));
