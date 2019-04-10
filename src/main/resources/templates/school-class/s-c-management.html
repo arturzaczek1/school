@@ -11,19 +11,29 @@
 <div class="container-fluid">
     <div class="row justify-content-center mt-1">
         <div class="col-sm-12 col-md-10 col-lg-8 mt-3 ml-2">
+            <p th:text="${info}"></p>
             <form class="mt-3" th:action="@{/s-c/new-class-form}" th:method="get">
-                <button type="submit" class="btn btn-primary">add class</button>
+                <button type="submit" class="btn btn-primary">add new class</button>
             </form>
-            <h4>class search</h4>
-            <div class="card mt-2" th:each="sc : ${sc}">
-                <div class="card-header"><h5 th:text="${sc.} + ' '+ ${user.lastName}">User name and last name</h5>
+            <h4 class="my-2">class search:</h4>
+            <div class="card mt-2" th:each="sc : ${schoolClass}">
+                <div class="card-header"><h5 th:text="'class name: ' + ${sc.getClassName()}">class name</h5>
                 </div>
                 <div class="card-body">
-                    <p class="card-text" th:text="'email: ' + ${user.email}">User email</p>
-                    <p class="card-text"
-                       th:text=" 'added date: ' + ${#temporals.format(user.addedDate, 'yyyy-MM-dd HH:mm')}">User added
-                        date</p>
-
+                    <p class="card-text" th:text="'profile: ' + ${sc.getClassProfile()}">class profile</p>
+                    <p class="card-text" th:text="'class id: ' + ${sc.getId()}">class id</p>
+                    <p class="card-text" th:text="'educator: ' + ${sc.getEducator()}">educator</p>
+                    <form th:method="post" th:action="@{/c-s/teacher/add}">
+                        <select class="custom-select" name="add_educator">
+                            <option selected th:value="${teachers}">choose teacher</option>
+                            <option th:each="teacher : ${teachers}" th:value="${teacher.getId()}" th:text="${teacher.getNameAndLastName()}">
+                                role
+                            </option>
+                        </select>
+                        <input type="hidden" name="school_class_id" th:value="${sc.getId()}">
+                        <button class="btn btn-warning btn-sm mt-1" type="submit">add class educator</button>
+                    </form>
+                    <p class="card-text">amount od students// TODO</p>
                 </div>
             </div>
         </div>

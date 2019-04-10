@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Getter
 public class SchoolClassRegisterForm {
     @NotBlank (message = "can't be empty")
-    @Size(min = 5, message = "at least 5 characters")
+    @Size(min = 3, message = "at least 5 characters")
     private String classProfile;
     @NotBlank (message = "can't be empty")
     @Size (max=5, message = "max 5 characters")

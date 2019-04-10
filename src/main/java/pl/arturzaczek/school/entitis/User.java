@@ -13,10 +13,10 @@ import java.util.Set;
 @Entity
 @Setter
 @Getter
-@ToString (exclude = "password")
+@ToString(exclude = "password")
 public class User extends BaseEntity {
 
-    @ManyToMany (cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roleSet;
@@ -48,5 +48,9 @@ public class User extends BaseEntity {
         }
 
         subjectSet.add(subject);
+    }
+
+    public String getNameAndLastName() {
+        return this.getName() + " " + this.getLastName();
     }
 }
