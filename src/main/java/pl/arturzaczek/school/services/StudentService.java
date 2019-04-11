@@ -1,12 +1,13 @@
 package pl.arturzaczek.school.services;
 
-import javafx.scene.input.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.arturzaczek.school.entitis.Role;
+import pl.arturzaczek.school.entitis.SchoolClass;
 import pl.arturzaczek.school.entitis.User;
 import pl.arturzaczek.school.forms.StudentForm;
 import pl.arturzaczek.school.repositories.RoleRepository;
+import pl.arturzaczek.school.repositories.SchoolClassRepository;
 import pl.arturzaczek.school.repositories.UserRepository;
 
 import java.time.LocalDate;
@@ -20,11 +21,13 @@ import java.util.stream.Collectors;
 public class StudentService {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+    private SchoolClassRepository schoolClassRepository;
 
     @Autowired
-    public StudentService(UserRepository userRepository, RoleRepository roleRepository) {
+    public StudentService(UserRepository userRepository, RoleRepository roleRepository, SchoolClassRepository schoolClassRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.schoolClassRepository = schoolClassRepository;
     }
 
     public String registerStudent(StudentForm studentForm) {
@@ -69,5 +72,19 @@ public class StudentService {
                 .filter(a -> a.getRoleSet().stream().anyMatch(b -> b.getRoleName().equals(Roles.ROLE_STUDENT.toString())))
                 .collect(Collectors.toList());
         return studentsList;
+    }
+
+    public String connectWithSchoolClass(String student, String class_id) {
+        Long classId = Long.parseLong(class_id);
+        Long studentId = Long.parseLong(student);
+        Optional<User> user = userRepository.findById(studentId);
+        SchoolClass sc = schoolClassRepository.findById(classId).get();
+        if (user.isPresent()) {
+            User user1 = user.get();
+            user1.setSchoolClass(sc);
+            userRepository.save(user1);
+            return "student connected with class";
+        }
+        return "could not connect";
     }
 }
