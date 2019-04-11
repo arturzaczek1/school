@@ -17,16 +17,35 @@
             <p th:text="${info}"></p>
             <h4>student search:</h4>
             <div class="card mt-2" th:each="student : ${students}">
-                <div class="card-header"><h5 th:text="${student.getName()} + ' '+ ${student.lastName}">User name and last name</h5>
+                <div class="card-header"><h5 th:text="${student.getName()} + ' '+ ${student.lastName}">User name and
+                    last name</h5>
                 </div>
                 <div class="card-body">
                     <p class="card-text" th:text="'email: ' + ${student.email}">User email</p>
                     <p class="card-text"
-                       th:text=" 'added date: ' + ${#temporals.format(student.addedDate, 'yyyy-MM-dd HH:mm')}">User added
+                       th:text=" 'added date: ' + ${#temporals.format(student.addedDate, 'yyyy-MM-dd HH:mm')}">User
+                        added
                         date</p>
                     <p class="card-text"
-                       th:text=" 'added date: ' + ${#temporals.format(student.birthDate, 'yyyy-MM-dd')}">User added
+                       th:text=" 'added date: ' + ${#temporals.format(student.birthDate, 'yyyy-MM-dd')}">User birth
                         date</p>
+                    <hr>
+                    <p class="card-text"
+                       th:text=" 'school class: ' + ${student?.getSchoolClass()}">
+                        school class</p>
+
+                    <form th:method="post" th:action="@{/student/s-c/add}">
+                        <select class="custom-select" name="add_class">
+                            <option selected th:value="${classes}">choose class</option>
+                            <option th:each="class : ${classes}" th:value="${class.getId()}"
+                                    th:text="${class.getClassName()}+ ', ' + ${class.getClassProfile()}">
+                                class
+                            </option>
+                        </select>
+                        <input type="hidden" name="student_id" th:value="${student.getId()}">
+                        <button class="btn btn-warning btn-sm mt-1" type="submit">connect student with class</button>
+                    </form>
+                    <hr>
                     <form th:method="post" th:action="@{/}">
                         <input type="hidden" name="user_id" th:value="${student.getId()}">
                         <button type="submit" class="btn btn-primary btn-sm">
@@ -35,16 +54,6 @@
                     </form>
                 </div>
             </div>
-<!--            <div class="card mt-2" th:each="sc : ${sc}">-->
-<!--                <div class="card-header"><h5 th:text="${sc.} + ' '+ ${user.lastName}">User name and last name</h5>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <p class="card-text" th:text="'email: ' + ${user.email}">User email</p>-->
-<!--                    <p class="card-text"-->
-<!--                       th:text=" 'added date: ' + ${#temporals.format(user.addedDate, 'yyyy-MM-dd HH:mm')}">User added-->
-<!--                        date</p>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </div>
     <div class="row justify-content-center mt-1">
