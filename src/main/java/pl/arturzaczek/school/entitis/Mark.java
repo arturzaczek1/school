@@ -21,7 +21,7 @@ public class Mark {
     @JoinColumn (name = "subject_id")
     private Subject subject;
     @OneToOne
-    @JoinColumn (name = "pupil_id")
+    @JoinColumn (name = "student_id")
     private User user;
     @OneToOne
     @JoinColumn (name = "teacher_id")
